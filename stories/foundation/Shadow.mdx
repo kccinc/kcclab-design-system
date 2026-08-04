@@ -1,0 +1,46 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { shadow } from "@kcclab/ui/tokens";
+
+<Meta title="Foundation/Shadow" />
+
+# Shadow (Elevation)
+
+`packages/ui/src/styles/tokens.css`
+
+`--ds-shadow-elevation-*`로 정의되어 있으며`shadow-[var(--ds-shadow-elevation-1)]` 형태로 사용하세요. <br/>
+숫자가 클수록 화면 위로 더 떠 보이는 요소를 의미하므로 일관되게 사용하세요.<br/>
+
+`tailwind.tokens.js`의 매핑 참고: 1 = 카드·리스트 아이템, 2 = 드롭다운·팝오버, 3 = 모달·바텀시트,
+4 = 토스트·최상위 오버레이
+
+export const ShadowCard = ({ name, value }) => (
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+    <div
+      style={{
+        width: 120,
+        height: 80,
+        borderRadius: 12,
+        background: "#ffffff",
+        boxShadow: value,
+      }}
+    />
+    <div style={{ fontFamily: "monospace", fontSize: 13, textAlign: "center" }}>
+      <div>{name}</div>
+      <div style={{ color: "#6b7684", maxWidth: 200 }}>{value}</div>
+    </div>
+  </div>
+);
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+    gap: 32,
+    padding: "24px 0",
+    background: "#f2f4f6",
+  }}
+>
+  {Object.entries(shadow).map(([name, value]) => (
+    <ShadowCard key={name} name={name} value={value} />
+  ))}
+</div>

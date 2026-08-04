@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "react-day-picker/style.css";
+
+/* Scan component source for Tailwind utility classes (arbitrary-value classes
+   that reference the --ds-* variables above are generated from here). */
+@source "../**/*.{ts,tsx}";
+
+/* Base font — without this, --ds-font-family-sans is only a token; nothing
+   ever renders in Pretendard even when the consumer loads @kcclab/ui/style.css. */
+body {
+  font-family: var(--ds-font-family-sans);
+}
+
+/* Used by Skeleton's shimmer animation (`animate-[ds-shimmer_1.5s_ease-in-out_infinite]`). */
+@keyframes ds-shimmer {
+  0% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+/* Used by Toast's entrance animation (`animate-[ds-toast-in_150ms_ease-out]`). */
+@keyframes ds-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* DatePicker (react-day-picker) — point its own theming variables at ours
+   instead of overriding its internal classNames one by one. */
+.rdp-root {
+  --rdp-accent-color: var(--ds-color-primary);
+  --rdp-accent-background-color: var(--ds-color-primary-light);
+  --rdp-today-color: var(--ds-color-primary);
+  --rdp-day_button-border-radius: var(--ds-radius-full);
+  font-family: var(--ds-font-family-sans);
+}

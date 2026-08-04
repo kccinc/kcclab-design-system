@@ -1,0 +1,24 @@
+node_modules
+dist
+storybook-static
+*.log
+*storybook.log
+.turbo
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+*.stackdump
+
+# env
+.env
+.env.local
+.env.*.local
+
+# editor
+.vscode/
+.idea/
+
+# gstack local tool state (browser audit log, etc.)
+.gstack/

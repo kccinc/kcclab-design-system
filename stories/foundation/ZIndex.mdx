@@ -1,0 +1,44 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { zIndex } from "@kcclab/ui/tokens";
+
+<Meta title="Foundation/Z-Index" />
+
+# Z-Index
+
+`packages/ui/src/styles/tokens.css`
+
+`--ds-z-*`로 정의되어 있으며, `z-[var(--ds-z-modal)]` 형태로 사용하세요.
+
+임의의 숫자 대신 항상 이 이름 붙은 레이어만 사용해야 모달이 실수로 고정 헤더 뒤에 깔리거나 툴팁이 오버레이 뒤에
+깔리는 문제를 막을 수 있습니다.
+
+<table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "monospace", fontSize: 14 }}>
+  <thead>
+    <tr style={{ textAlign: "left", borderBottom: "2px solid #d1d6db" }}>
+      <th style={{ padding: "8px 12px" }}>토큰</th>
+      <th style={{ padding: "8px 12px" }}>값</th>
+      <th style={{ padding: "8px 12px" }}>주요 용도</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.entries(zIndex).map(([name, value]) => (
+      <tr key={name} style={{ borderBottom: "1px solid #e5e8eb" }}>
+        <td style={{ padding: "8px 12px" }}>z-{name}</td>
+        <td style={{ padding: "8px 12px" }}>{value}</td>
+        <td style={{ padding: "8px 12px", fontFamily: "sans-serif", color: "#4e5968" }}>
+          {
+            {
+              dropdown: "드롭다운 메뉴",
+              sticky: "고정 헤더, 사이드바",
+              fixed: "하단 고정 CTA",
+              overlay: "모달 뒤 dimmed 배경",
+              modal: "모달, 바텀시트",
+              toast: "토스트 — 툴팁을 제외한 모든 요소보다 위",
+              tooltip: "툴팁 — 항상 최상단",
+            }[name]
+          }
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

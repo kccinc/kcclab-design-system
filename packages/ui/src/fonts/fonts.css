@@ -1,0 +1,44 @@
+/**
+ * Pretendard web font — 4 static weights only (Regular/Medium/SemiBold/Bold).
+ * Drop the matching .woff2 files into this folder with these exact names:
+ *   Pretendard-Regular.woff2   (400)
+ *   Pretendard-Medium.woff2    (500)
+ *   Pretendard-SemiBold.woff2  (600)
+ *   Pretendard-Bold.woff2      (700)
+ *
+ * Referenced via --ds-font-family-sans (src/styles/tokens.css) — components
+ * should use that variable / Tailwind's `font-sans`, never a literal
+ * "Pretendard" string.
+ */
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./Pretendard-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("./Pretendard-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("./Pretendard-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("./Pretendard-Bold.woff2") format("woff2");
+}

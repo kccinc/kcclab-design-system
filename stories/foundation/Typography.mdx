@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { typography } from "@kcclab/ui/tokens";
+
+<Meta title="Foundation/Typography" />
+
+# Typography
+
+`packages/ui/src/styles/tokens.css`
+
+`--ds-font-size-*` / `--ds-line-height-*` 쌍으로 정의되어 있습니다.<br/>
+`text-[length:var(--ds-font-size-body1)] leading-[var(--ds-line-height-body1)]`
+처럼 두 값을 함께 사용하세요.
+
+export const TypeRow = ({ name, style }) => (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "baseline",
+      gap: 16,
+      padding: "12px 0",
+      borderBottom: "1px solid #e5e8eb",
+    }}
+  >
+    <div style={{ width: 96, fontFamily: "monospace", fontSize: 13, color: "#6b7684" }}>
+      {name}
+    </div>
+    <div style={{ fontSize: style.fontSize, lineHeight: style.lineHeight }}>
+      디자인 시스템 Typography {style.fontSize}
+    </div>
+  </div>
+);
+
+<div>
+  {Object.entries(typography).map(([name, style]) => (
+    <TypeRow key={name} name={name} style={style} />
+  ))}
+</div>

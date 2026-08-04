@@ -1,0 +1,34 @@
+{
+  "name": "design-system",
+  "private": true,
+  "version": "0.0.0",
+  "description": "kcclab design system monorepo",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "build": "pnpm --filter @kcclab/ui build",
+    "dev": "pnpm --filter @kcclab/ui dev",
+    "storybook": "pnpm build && storybook dev -p 6006",
+    "build-storybook": "pnpm build && storybook build",
+    "lint": "pnpm --filter @kcclab/ui lint",
+    "typecheck": "pnpm --filter @kcclab/ui typecheck",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2",
+    "@kcclab/ui": "workspace:*",
+    "@storybook/addon-a11y": "^10",
+    "@storybook/addon-docs": "^10",
+    "@storybook/react-vite": "^10",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react": "^18",
+    "react-dom": "^18",
+    "storybook": "^10",
+    "typescript": "^5"
+  }
+}

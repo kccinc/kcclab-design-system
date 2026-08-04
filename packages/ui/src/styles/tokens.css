@@ -1,0 +1,267 @@
+/**
+ * Design token source of truth as CSS custom properties.
+ * Consuming apps may override any of these by redeclaring them on `:root`
+ * (or on a scoped selector, e.g. for theming/dark mode) after this file loads.
+ */
+:root {
+  /* Color — grey */
+  --ds-color-grey-50: #f9fafb;
+  --ds-color-grey-100: #f2f4f6;
+  --ds-color-grey-200: #e5e8eb;
+  --ds-color-grey-300: #d1d6db;
+  --ds-color-grey-400: #b0b8c1;
+  --ds-color-grey-500: #8b95a1;
+  --ds-color-grey-600: #6b7684;
+  --ds-color-grey-700: #4e5968;
+  --ds-color-grey-800: #333d4b;
+  --ds-color-grey-900: #191f28;
+
+  /* Color — blue */
+  --ds-color-blue-50: #e8f3ff;
+  --ds-color-blue-100: #c9e2ff;
+  --ds-color-blue-200: #90c2ff;
+  --ds-color-blue-300: #64a8ff;
+  --ds-color-blue-400: #4593fc;
+  --ds-color-blue-500: #3182f6;
+  --ds-color-blue-600: #2272eb;
+  --ds-color-blue-700: #1b64da;
+  --ds-color-blue-800: #1957c2;
+  --ds-color-blue-900: #194aa6;
+
+  /* Color — red */
+  --ds-color-red-50: #ffeeee;
+  --ds-color-red-100: #ffd4d6;
+  --ds-color-red-200: #feafb4;
+  --ds-color-red-300: #fb8890;
+  --ds-color-red-400: #f66570;
+  --ds-color-red-500: #f04452;
+  --ds-color-red-600: #e42939;
+  --ds-color-red-700: #d22030;
+  --ds-color-red-800: #bc1b2a;
+  --ds-color-red-900: #a51926;
+
+  /* Color — orange */
+  --ds-color-orange-50: #fff3e0;
+  --ds-color-orange-100: #ffe0b0;
+  --ds-color-orange-200: #ffcd80;
+  --ds-color-orange-300: #ffbd51;
+  --ds-color-orange-400: #ffa927;
+  --ds-color-orange-500: #fe9800;
+  --ds-color-orange-600: #fb8800;
+  --ds-color-orange-700: #f57800;
+  --ds-color-orange-800: #ed6700;
+  --ds-color-orange-900: #e45600;
+
+  /* Color — yellow */
+  --ds-color-yellow-50: #fff9e7;
+  --ds-color-yellow-100: #ffefbf;
+  --ds-color-yellow-200: #ffe69b;
+  --ds-color-yellow-300: #ffdd78;
+  --ds-color-yellow-400: #ffd158;
+  --ds-color-yellow-500: #ffc342;
+  --ds-color-yellow-600: #ffb331;
+  --ds-color-yellow-700: #faa131;
+  --ds-color-yellow-800: #ee8f11;
+  --ds-color-yellow-900: #dd7d02;
+
+  /* Color — green */
+  --ds-color-green-50: #f0faf6;
+  --ds-color-green-100: #aeefd5;
+  --ds-color-green-200: #76e4b8;
+  --ds-color-green-300: #3fd599;
+  --ds-color-green-400: #15c47e;
+  --ds-color-green-500: #03b26c;
+  --ds-color-green-600: #02a262;
+  --ds-color-green-700: #029359;
+  --ds-color-green-800: #028450;
+  --ds-color-green-900: #027648;
+
+  /* Color — teal */
+  --ds-color-teal-50: #edf8f8;
+  --ds-color-teal-100: #bce9e9;
+  --ds-color-teal-200: #89d8d8;
+  --ds-color-teal-300: #58c7c7;
+  --ds-color-teal-400: #30b6b6;
+  --ds-color-teal-500: #18a5a5;
+  --ds-color-teal-600: #109595;
+  --ds-color-teal-700: #0c8585;
+  --ds-color-teal-800: #097575;
+  --ds-color-teal-900: #076565;
+
+  /* Color — purple */
+  --ds-color-purple-50: #f9f0fc;
+  --ds-color-purple-100: #edccf8;
+  --ds-color-purple-200: #da9bef;
+  --ds-color-purple-300: #c770e4;
+  --ds-color-purple-400: #b44bd7;
+  --ds-color-purple-500: #a234c7;
+  --ds-color-purple-600: #9128b4;
+  --ds-color-purple-700: #8222a2;
+  --ds-color-purple-800: #73228e;
+  --ds-color-purple-900: #65237b;
+
+  /* Color — grey with opacity (overlays, dividers, scrims) */
+  --ds-color-grey-opacity-50: rgba(0, 23, 51, 0.02);
+  --ds-color-grey-opacity-100: rgba(2, 32, 71, 0.05);
+  --ds-color-grey-opacity-200: rgba(0, 27, 55, 0.1);
+  --ds-color-grey-opacity-300: rgba(0, 29, 58, 0.18);
+  --ds-color-grey-opacity-400: rgba(0, 25, 54, 0.31);
+  --ds-color-grey-opacity-500: rgba(3, 24, 50, 0.46);
+  --ds-color-grey-opacity-600: rgba(0, 19, 43, 0.58);
+  --ds-color-grey-opacity-700: rgba(3, 18, 40, 0.7);
+  --ds-color-grey-opacity-800: rgba(0, 12, 30, 0.8);
+  --ds-color-grey-opacity-900: rgba(2, 9, 19, 0.91);
+
+  /* Color — semantic backgrounds (safe to re-theme for dark mode) */
+  --ds-color-background: #ffffff;
+  --ds-color-grey-background: #f2f4f6;
+  --ds-color-layered-background: #ffffff;
+  --ds-color-floated-background: #ffffff;
+  --ds-color-inverse-background: var(--ds-color-grey-900); /* dark surface paired with --ds-color-text-inverse — e.g. Tooltip */
+
+  /* Color — semantic action colors. Prefer these over the primitive scale
+     (--ds-color-blue-500, etc.) in component code — rebranding/retheming
+     only requires changing the values here, not every component. Each
+     aliases a primitive by default; override here (not the primitive) to
+     restyle just one role. */
+  --ds-color-primary: var(--ds-color-blue-500);
+  --ds-color-primary-hover: var(--ds-color-blue-600);
+  --ds-color-primary-active: var(--ds-color-blue-700);
+  --ds-color-primary-light: var(--ds-color-blue-50);
+  --ds-color-secondary: var(--ds-color-grey-600);
+  --ds-color-secondary-hover: var(--ds-color-grey-700);
+  --ds-color-secondary-light: var(--ds-color-grey-100);
+  --ds-color-success: var(--ds-color-green-500);
+  --ds-color-success-hover: var(--ds-color-green-600);
+  --ds-color-success-light: var(--ds-color-green-50);
+  --ds-color-danger: var(--ds-color-red-500);
+  --ds-color-danger-hover: var(--ds-color-red-600);
+  --ds-color-danger-light: var(--ds-color-red-50);
+  --ds-color-warning: var(--ds-color-orange-500);
+  --ds-color-warning-hover: var(--ds-color-orange-600);
+  --ds-color-warning-light: var(--ds-color-orange-50);
+  --ds-color-info: var(--ds-color-teal-500);
+  --ds-color-info-hover: var(--ds-color-teal-600);
+  --ds-color-info-light: var(--ds-color-teal-50);
+
+  /* Color — semantic border colors. Kept separate from text/background so a
+     className reads as "what kind of border is this" at a glance. */
+  --ds-color-border: var(--ds-color-grey-200);
+  --ds-color-border-strong: var(--ds-color-grey-300);
+  --ds-color-border-primary: var(--ds-color-primary);
+  --ds-color-border-danger: var(--ds-color-danger);
+
+  /* Color — semantic text colors. Prefer these over --ds-color-grey-* in
+     component code. */
+  --ds-color-text-primary: var(--ds-color-grey-900);
+  --ds-color-text-secondary: var(--ds-color-grey-700);
+  --ds-color-text-tertiary: var(--ds-color-grey-500);
+  --ds-color-text-disabled: var(--ds-color-grey-400);
+  --ds-color-text-placeholder: var(--ds-color-grey-400);
+  --ds-color-text-inverse: #ffffff;
+
+  /* Typography */
+  --ds-font-size-display: 30px;
+  --ds-line-height-display: 40px;
+  --ds-font-size-heading1: 26px;
+  --ds-line-height-heading1: 35px;
+  --ds-font-size-heading2: 24px;
+  --ds-line-height-heading2: 33px;
+  --ds-font-size-heading3: 22px;
+  --ds-line-height-heading3: 31px;
+  --ds-font-size-heading4: 20px;
+  --ds-line-height-heading4: 29px;
+  --ds-font-size-subtitle1: 19px;
+  --ds-line-height-subtitle1: 28px;
+  --ds-font-size-subtitle2: 18px;
+  --ds-line-height-subtitle2: 27px;
+  --ds-font-size-body1: 17px;
+  --ds-line-height-body1: 25.5px;
+  --ds-font-size-body2: 16px;
+  --ds-line-height-body2: 24px;
+  --ds-font-size-body3: 15px;
+  --ds-line-height-body3: 22.5px;
+  --ds-font-size-caption1: 14px;
+  --ds-line-height-caption1: 21px;
+  --ds-font-size-caption2: 13px;
+  --ds-line-height-caption2: 19.5px;
+  --ds-font-size-label1: 12px;
+  --ds-line-height-label1: 18px;
+  --ds-font-size-label2: 11px;
+  --ds-line-height-label2: 16.5px;
+
+  /* Spacing (4px grid) */
+  --ds-space-0: 0px;
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 20px;
+  --ds-space-6: 24px;
+  --ds-space-8: 32px;
+  --ds-space-10: 40px;
+  --ds-space-12: 48px;
+  --ds-space-16: 64px;
+  --ds-space-20: 80px;
+
+  /* Border radius */
+  --ds-radius-xs: 4px;
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 16px;
+  --ds-radius-xl: 24px;
+  --ds-radius-full: 9999px;
+
+  /* Elevation (box-shadow) */
+  --ds-shadow-elevation-1: 0px 1px 2px rgba(15, 23, 42, 0.06);
+  --ds-shadow-elevation-2: 0px 2px 8px rgba(15, 23, 42, 0.08);
+  --ds-shadow-elevation-3: 0px 4px 16px rgba(15, 23, 42, 0.1);
+  --ds-shadow-elevation-4: 0px 8px 24px rgba(15, 23, 42, 0.12);
+
+  /* Z-index scale — use these instead of arbitrary numbers to avoid layer collisions */
+  --ds-z-dropdown: 100;
+  --ds-z-sticky: 200;
+  --ds-z-fixed: 300;
+  --ds-z-overlay: 400;
+  --ds-z-modal: 500;
+  --ds-z-toast: 600;
+  --ds-z-tooltip: 700;
+
+  /* Font family */
+  --ds-font-family-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    sans-serif;
+
+  /* Icon size (square — use for both width and height) */
+  --ds-icon-xs: 12px;
+  --ds-icon-sm: 16px;
+  --ds-icon-md: 20px;
+  --ds-icon-lg: 24px;
+  --ds-icon-xl: 32px;
+
+  /* Opacity — for representing disabled/hover state without a color change */
+  --ds-opacity-disabled: 0.4;
+  --ds-opacity-hover: 0.8;
+  --ds-opacity-pressed: 0.6;
+
+  /* Border width */
+  --ds-border-width: 1px;
+  --ds-border-width-thick: 2px;
+
+  /* Transition */
+  --ds-transition-fast: 150ms;
+  --ds-transition-normal: 250ms;
+  --ds-transition-slow: 400ms;
+  --ds-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Focus ring (keyboard accessibility) */
+  --ds-ring-color: var(--ds-color-primary);
+  --ds-ring-width: 2px;
+  --ds-ring-offset-width: 2px;
+
+  /* Avatar size (square — use for both width and height) */
+  --ds-avatar-xs: 24px;
+  --ds-avatar-sm: 32px;
+  --ds-avatar-md: 40px;
+  --ds-avatar-lg: 48px;
+  --ds-avatar-xl: 64px;
+}

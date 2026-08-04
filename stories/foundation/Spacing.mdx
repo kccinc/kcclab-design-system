@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { spacing } from "@kcclab/ui/tokens";
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing
+
+`packages/ui/src/styles/tokens.css`
+
+
+4px 그리드 기준, `--ds-space-*`로 정의되어 있으며, `p-[var(--ds-space-3)]`, `gap-[var(--ds-space-4)]` 형태로 사용하세요.
+
+export const SpaceRow = ({ name, value }) => (
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 16,
+      padding: "8px 0",
+      borderBottom: "1px solid #e5e8eb",
+    }}
+  >
+    <div style={{ width: 100, fontFamily: "monospace", fontSize: 13, color: "#6b7684" }}>
+      space-{name}
+    </div>
+    <div style={{ width: 90, fontFamily: "monospace", fontSize: 13 }}>{value}</div>
+    <div style={{ height: 20, width: value, background: "#3182f6", borderRadius: 2 }} />
+  </div>
+);
+
+<div>
+  {Object.entries(spacing).map(([name, value]) => (
+    <SpaceRow key={name} name={name} value={value} />
+  ))}
+</div>
