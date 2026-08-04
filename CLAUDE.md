@@ -1,8 +1,8 @@
-# design-system (@kcclab/ui)
+# design-system (@kccinc/kcclab-design-system)
 
 pnpm workspace monorepo for the kcclab design system.
 
-- `packages/ui` — the published package (`@kcclab/ui`): components + design tokens, built with `tsup`.
+- `packages/ui` — the published package (`@kccinc/kcclab-design-system`): components + design tokens, built with `tsup`.
 - `.storybook`, `stories/` — Storybook, run against the built `packages/ui` output.
 
 ## Web fonts (Pretendard)
@@ -15,14 +15,14 @@ build fails until those 4 files exist** (tsup can't resolve the `url()`s) — th
 expected, not a bug.
 
 This is wired into `dist/style.css` only, not into the auto-injected JS bundle
-(`import '@kcclab/ui'` alone won't load the font). That's intentional: tsup's
+(`import '@kccinc/kcclab-design-system'` alone won't load the font). That's intentional: tsup's
 `injectStyle` turns CSS into a runtime `<style>` tag, and a relative `url()` inside an
 injected tag resolves against the *consuming page's* URL, not the package's — it would
 404. `dist/style.css` is a real file built from `src/styles/style.css` (not
 `index.css`), with `dist/fonts/*.woff2` copied right next to it, so its relative
 `url()`s resolve correctly. Consumers who want the actual Pretendard font (rather than
 the `-apple-system`/`system-ui` fallback in `--ds-font-family-sans`) need to explicitly
-`import '@kcclab/ui/style.css'` once, in addition to importing components as usual.
+`import '@kccinc/kcclab-design-system/style.css'` once, in addition to importing components as usual.
 
 ## Commands
 

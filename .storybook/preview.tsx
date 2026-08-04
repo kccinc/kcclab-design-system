@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/react-vite";
 
 // Built stylesheet from the workspace package (run `pnpm build` first —
 // the root `storybook`/`build-storybook` scripts already do this).
-import "@kcclab/ui/style.css";
+import "@kccinc/kcclab-design-system/style.css";
 
 const preview: Preview = {
   parameters: {

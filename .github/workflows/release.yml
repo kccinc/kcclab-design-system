@@ -26,7 +26,7 @@ jobs:
         with:
           node-version-file: package.json
           registry-url: "https://npm.pkg.github.com"
-          scope: "@kcclab"
+          scope: "@kccinc"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
