@@ -130,3 +130,6 @@ export type { StepperProps, StepperStep } from "./components/Stepper";
 
 export { Table } from "./components/Table";
 export type { TableProps, TableColumn, TableSortDirection, TableColumnAlign } from "./components/Table";
+
+export { Signature } from "./components/Signature";
+export type { SignatureProps, SignatureSize } from "./components/Signature";
