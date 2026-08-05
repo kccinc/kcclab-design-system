@@ -1,32 +1,23 @@
 # @kccinc/kcclab-design-system
 
-kcclab 디자인 시스템 — React 컴포넌트 + 디자인 토큰. GitHub Packages(`npm.pkg.github.com`)로 배포됩니다.
+kcclab 디자인 시스템 — React 컴포넌트 + 디자인 토큰<br/>
+GitHub Packages(`npm.pkg.github.com`)로 배포
 
 ## 설치
 
-GitHub Packages는 public 패키지도 인증이 필요합니다.
+1. GitHub → **Settings > Developer settings > Personal access tokens > Tokens (classic)** 에서 `read:packages` 스코프 체크 후 토큰 발급<br/>
+(Fine-grained PAT는 GitHub Packages를 지원하지 않으니 반드시 Classic 사용)
 
-1. `read:packages` 권한의 Personal Access Token 발급
-   - Classic PAT: `read:packages` 스코프 체크
-   - Fine-grained PAT: 이 저장소에 대한 **Packages: Read** 권한 부여
-2. `~/.npmrc`에 등록 (홈 디렉토리 전역 설정 권장):
+2. `~/.npmrc`에 등록 (PowerShell):
+```powershell
+   Add-Content -Path $HOME\.npmrc -Encoding ascii -Value "@kccinc:registry=https://npm.pkg.github.com/"
+   Add-Content -Path $HOME\.npmrc -Encoding ascii -Value "//npm.pkg.github.com/:_authToken=본인의_PAT"
+```
 
-   ```
-   @kccinc:registry=https://npm.pkg.github.com/
-   //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
-   ```
-
-3. 환경변수 설정 (PowerShell):
-
-   ```powershell
-   $env:NPM_TOKEN = "본인의_PAT"
-   ```
-
-4. 설치:
-
-   ```bash
+3. 설치:
+```bash
    pnpm add @kccinc/kcclab-design-system
-   ```
+```
 
 ## 사용법
 
