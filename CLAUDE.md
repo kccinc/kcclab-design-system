@@ -32,6 +32,11 @@ the `-apple-system`/`system-ui` fallback in `--ds-font-family-sans`) need to exp
 - `pnpm typecheck` / `pnpm lint` — `tsc --noEmit` for `packages/ui`.
 - `pnpm changeset` — record a changeset for the current change (see below).
 
+## Commits
+
+커밋 메시지는 `CONTRIBUTING.md`의 Conventional Commits 컨벤션(`<type>(<scope>): <description>`)을
+따릅니다. `packages/ui`를 변경했다면 커밋 전에 `pnpm changeset`도 함께 실행하세요 (규칙 10 참고).
+
 ## Hard rules for component work
 
 **1. Never hardcode design values. Tokens only.**
