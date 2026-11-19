@@ -3,7 +3,6 @@
 import { useId, useState } from "react";
 import type { FormEvent } from "react";
 import { Badge } from "../../components/Badge";
-import type { BadgeVariant } from "../../components/Badge";
 import { Button } from "../../components/Button";
 import { DatePicker } from "../../components/DatePicker";
 import { EmptyState } from "../../components/EmptyState";
@@ -15,78 +14,8 @@ import { PageHeader } from "../../components/PageHeader";
 import { Pagination } from "../../components/Pagination";
 import { Select } from "../../components/Select";
 import { Table } from "../../components/Table";
-
-// ─── 데이터 ──────────────────────────────────────────────────────────
-export type OrderStatus = "pending" | "paid" | "shipped" | "cancelled";
-
-export interface Order {
-  id: string;
-  customer: string;
-  product: string;
-  amount: number;
-  status: OrderStatus;
-  /** yyyy-mm-dd */
-  orderedAt: string;
-}
-
-const STATUS: Record<OrderStatus, { label: string; variant: BadgeVariant }> = {
-  pending: { label: "결제 대기", variant: "warning" },
-  paid: { label: "결제 완료", variant: "primary" },
-  shipped: { label: "배송 중", variant: "success" },
-  cancelled: { label: "취소", variant: "neutral" },
-};
-
-const STATUS_OPTIONS = [
-  { value: "all", label: "전체" },
-  ...(Object.keys(STATUS) as OrderStatus[]).map((s) => ({ value: s, label: STATUS[s].label })),
-];
-
-const customers = ["김민수", "이서연", "박지훈", "최유진", "정다은", "한도윤"];
-const products = ["무선 키보드", "27인치 모니터", "USB-C 허브", "노트북 거치대", "블루투스 스피커"];
-const statuses = Object.keys(STATUS) as OrderStatus[];
-
-/** 예시 주문 42건 */
-export const sampleOrders: Order[] = Array.from({ length: 42 }, (_, i) => ({
-  id: `ORD-${20240 + i}`,
-  customer: customers[i % customers.length]!,
-  product: products[(i * 3) % products.length]!,
-  amount: 19000 + ((i * 7919) % 380) * 1000,
-  status: statuses[i % statuses.length]!,
-  orderedAt: `2026-11-${String(16 - (i % 15)).padStart(2, "0")}`,
-}));
-
-// ─── 검색 조건 ───────────────────────────────────────────────────────
-interface Filters {
-  orderId: string;
-  customer: string;
-  product: string;
-  status: "all" | OrderStatus;
-  from?: Date;
-  to?: Date;
-}
-
-const EMPTY_FILTERS: Filters = { orderId: "", customer: "", product: "", status: "all" };
-
-const toYmd = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-
-const contains = (value: string, query: string) => value.toLowerCase().includes(query.trim().toLowerCase());
-
-function matches(order: Order, f: Filters) {
-  return (
-    contains(order.id, f.orderId) &&
-    contains(order.customer, f.customer) &&
-    contains(order.product, f.product) &&
-    (f.status === "all" || order.status === f.status) &&
-    (!f.from || order.orderedAt >= toYmd(f.from)) &&
-    (!f.to || order.orderedAt <= toYmd(f.to))
-  );
-}
-
-const isFiltered = (f: Filters) =>
-  Boolean(f.orderId.trim() || f.customer.trim() || f.product.trim() || f.status !== "all" || f.from || f.to);
-
-const PAGE_SIZE = 10;
+import { EMPTY_FILTERS, PAGE_SIZE, STATUS, STATUS_OPTIONS, isFiltered, matches, sampleOrders } from "./orders";
+import type { Filters, Order } from "./orders";
 
 // ─── 화면 ────────────────────────────────────────────────────────────
 export interface ListPageProps {
