@@ -51,7 +51,7 @@ function ChevronRightIcon() {
 }
 
 const navButtonClassName =
-  "inline-flex h-[var(--ds-space-8)] w-[var(--ds-space-8)] shrink-0 cursor-pointer items-center justify-center rounded-[var(--ds-radius-sm)] " +
+  "inline-flex h-[var(--ds-control-height-sm)] w-[var(--ds-control-height-sm)] shrink-0 cursor-pointer items-center justify-center rounded-[var(--ds-radius-sm)] " +
   "text-[var(--ds-color-text-secondary)] transition-colors duration-150 hover:bg-[var(--ds-color-grey-opacity-100)] " +
   "disabled:cursor-not-allowed disabled:opacity-[var(--ds-opacity-disabled)] disabled:hover:bg-transparent " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ds-color-border-primary)]";
@@ -80,7 +80,7 @@ export function Pagination({ page, totalPages, onPageChange, siblingCount = 1, c
         item === ELLIPSIS ? (
           <span
             key={`ellipsis-${i}`}
-            className="inline-flex h-[var(--ds-space-8)] w-[var(--ds-space-8)] items-center justify-center text-[var(--ds-color-text-tertiary)]"
+            className="inline-flex h-[var(--ds-control-height-sm)] w-[var(--ds-control-height-sm)] items-center justify-center text-[var(--ds-color-text-tertiary)]"
           >
             …
           </span>
@@ -91,7 +91,7 @@ export function Pagination({ page, totalPages, onPageChange, siblingCount = 1, c
             onClick={() => onPageChange(item)}
             aria-current={item === page ? "page" : undefined}
             className={[
-              "inline-flex h-[var(--ds-space-8)] w-[var(--ds-space-8)] shrink-0 cursor-pointer items-center justify-center rounded-[var(--ds-radius-sm)]",
+              "inline-flex h-[var(--ds-control-height-sm)] w-[var(--ds-control-height-sm)] shrink-0 cursor-pointer items-center justify-center rounded-[var(--ds-radius-sm)]",
               "text-[length:var(--ds-font-size-body3)] leading-[var(--ds-line-height-body3)] transition-colors duration-150",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ds-color-border-primary)]",
               item === page

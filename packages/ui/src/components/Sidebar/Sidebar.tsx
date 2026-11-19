@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Accordion } from "../Accordion";
+import type { LinkComponent } from "../../utils/link";
 
 export interface SidebarMenuItem {
   /** 항목을 식별하는 고유 값 (Accordion의 `value`로도 사용됩니다). */
@@ -23,6 +24,8 @@ export interface SidebarProps {
   userRoles?: string[];
   /** 현재 활성화된(선택된) 항목의 `id`. */
   activeId?: string;
+  /** `href`가 있는 항목을 그릴 링크 컴포넌트 (예: Next.js `Link`). 지정하지 않으면 `<a>`로 이동해 페이지 전체를 새로 불러옵니다. @default "a" */
+  linkComponent?: LinkComponent;
   className?: string;
 }
 
@@ -38,7 +41,23 @@ function filterItems(items: SidebarMenuItem[], userRoles?: string[]): SidebarMen
     .map((item) => (item.children ? { ...item, children: filterItems(item.children, userRoles) } : item));
 }
 
-function MenuRow({ item, active, indent = false }: { item: SidebarMenuItem; active: boolean; indent?: boolean }) {
+/** `activeId`를 하위 메뉴로 가진 상위 항목 id — 처음 그릴 때 그 아코디언을 펼쳐 둡니다. */
+function parentsOf(items: SidebarMenuItem[], activeId?: string): string[] {
+  if (!activeId) return [];
+  return items.filter((item) => item.children?.some((child) => child.id === activeId)).map((item) => item.id);
+}
+
+function MenuRow({
+  item,
+  active,
+  indent = false,
+  link: Link = "a",
+}: {
+  item: SidebarMenuItem;
+  active: boolean;
+  indent?: boolean;
+  link?: LinkComponent;
+}) {
   const classes = [
     "ds-sidebar-row flex w-full cursor-pointer items-center gap-[var(--ds-space-2)] rounded-[var(--ds-radius-sm)]",
     "px-[var(--ds-space-3)] py-[var(--ds-space-2)] text-[length:var(--ds-font-size-body2)] leading-[var(--ds-line-height-body2)]",
@@ -60,9 +79,9 @@ function MenuRow({ item, active, indent = false }: { item: SidebarMenuItem; acti
 
   if (item.href) {
     return (
-      <a href={item.href} className={classes} aria-current={active ? "page" : undefined}>
+      <Link href={item.href} className={classes} aria-current={active ? "page" : undefined}>
         {content}
-      </a>
+      </Link>
     );
   }
 
@@ -73,24 +92,24 @@ function MenuRow({ item, active, indent = false }: { item: SidebarMenuItem; acti
   );
 }
 
-export function Sidebar({ items, userRoles, activeId, className }: SidebarProps) {
+export function Sidebar({ items, userRoles, activeId, linkComponent, className }: SidebarProps) {
   const visibleItems = filterItems(items, userRoles);
 
   return (
     <nav className={["ds-sidebar w-full", className].filter(Boolean).join(" ")}>
-      <Accordion type="multiple">
+      <Accordion type="multiple" defaultValue={parentsOf(visibleItems, activeId)}>
         {visibleItems.map((item) =>
           item.children && item.children.length > 0 ? (
             <Accordion.Item key={item.id} value={item.id} title={<MenuRow item={item} active={false} />}>
               <div className="flex flex-col gap-[var(--ds-space-1)]">
                 {item.children.map((child) => (
-                  <MenuRow key={child.id} item={child} active={child.id === activeId} indent />
+                  <MenuRow key={child.id} item={child} active={child.id === activeId} indent link={linkComponent} />
                 ))}
               </div>
             </Accordion.Item>
           ) : (
             <div key={item.id} className="py-[var(--ds-space-1)]">
-              <MenuRow item={item} active={item.id === activeId} />
+              <MenuRow item={item} active={item.id === activeId} link={linkComponent} />
             </div>
           ),
         )}

@@ -27,9 +27,9 @@ const baseClassName =
   "disabled:cursor-not-allowed disabled:opacity-[var(--ds-opacity-disabled)]";
 
 const sizeClassName: Record<IconButtonSize, string> = {
-  sm: "w-8 h-8 [&_svg]:w-[var(--ds-icon-sm)] [&_svg]:h-[var(--ds-icon-sm)]",
-  md: "w-10 h-10 [&_svg]:w-[var(--ds-icon-md)] [&_svg]:h-[var(--ds-icon-md)]",
-  lg: "w-12 h-12 [&_svg]:w-[var(--ds-icon-lg)] [&_svg]:h-[var(--ds-icon-lg)]",
+  sm: "w-[var(--ds-control-height-sm)] h-[var(--ds-control-height-sm)] [&_svg]:w-[var(--ds-icon-sm)] [&_svg]:h-[var(--ds-icon-sm)]",
+  md: "w-[var(--ds-control-height-md)] h-[var(--ds-control-height-md)] [&_svg]:w-[var(--ds-icon-md)] [&_svg]:h-[var(--ds-icon-md)]",
+  lg: "w-[var(--ds-control-height-lg)] h-[var(--ds-control-height-lg)] [&_svg]:w-[var(--ds-icon-lg)] [&_svg]:h-[var(--ds-icon-lg)]",
 };
 
 const variantClassName: Record<IconButtonVariant, string> = {

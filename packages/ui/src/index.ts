@@ -133,3 +133,24 @@ export type { TableProps, TableColumn, TableSortDirection, TableColumnAlign } fr
 
 export { Signature } from "./components/Signature";
 export type { SignatureProps, SignatureSize } from "./components/Signature";
+
+// Batch 9 — 앱 골격 기본 요소
+export { Icon, ICON_NAMES } from "./components/Icon";
+export type { IconProps, IconSize, IconName } from "./components/Icon";
+
+export { EmptyState } from "./components/EmptyState";
+export type { EmptyStateProps } from "./components/EmptyState";
+
+export { PageHeader } from "./components/PageHeader";
+export type { PageHeaderProps } from "./components/PageHeader";
+
+export { CommandPalette } from "./components/CommandPalette";
+export type { CommandPaletteProps, CommandPaletteItem } from "./components/CommandPalette";
+
+export { Nav } from "./components/Nav";
+export type { NavProps, NavGroupProps, NavItemProps, NavOrientation, NavItemLayout } from "./components/Nav";
+
+export { AppShell } from "./components/AppShell";
+export type { AppShellProps } from "./components/AppShell";
+
+export type { LinkComponent, LinkComponentProps } from "./utils/link";

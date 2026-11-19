@@ -53,9 +53,9 @@ function CheckIcon() {
 }
 
 const sizeClassName: Record<SelectSize, string> = {
-  sm: "h-[var(--ds-space-8)] px-[var(--ds-space-3)] text-[length:var(--ds-font-size-caption1)] leading-[var(--ds-line-height-caption1)]",
-  md: "h-[var(--ds-space-10)] px-[var(--ds-space-4)] text-[length:var(--ds-font-size-body2)] leading-[var(--ds-line-height-body2)]",
-  lg: "h-[var(--ds-space-12)] px-[var(--ds-space-5)] text-[length:var(--ds-font-size-body1)] leading-[var(--ds-line-height-body1)]",
+  sm: "h-[var(--ds-control-height-sm)] px-[var(--ds-space-3)] text-[length:var(--ds-font-size-caption1)] leading-[var(--ds-line-height-caption1)]",
+  md: "h-[var(--ds-control-height-md)] px-[var(--ds-space-4)] text-[length:var(--ds-font-size-body2)] leading-[var(--ds-line-height-body2)]",
+  lg: "h-[var(--ds-control-height-lg)] px-[var(--ds-space-5)] text-[length:var(--ds-font-size-body1)] leading-[var(--ds-line-height-body1)]",
 };
 
 function variantClassName(variant: SelectVariant, hasError: boolean) {
