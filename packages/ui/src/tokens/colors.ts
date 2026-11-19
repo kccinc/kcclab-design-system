@@ -120,6 +120,8 @@ export const colors = {
     floatedBackground: "#ffffff",
     /** Dark surface paired with `colors.text.inverse` — e.g. Tooltip. */
     inverseBackground: "#191f28",
+    /** Raised/hovered element on an inverse surface — e.g. a kbd chip in a dark header. */
+    inverseBackgroundHover: "#333d4b", // grey.800
   },
   /**
    * Semantic action colors. Prefer these over the primitive scales
@@ -166,6 +168,7 @@ export const colors = {
     strong: "#d1d6db", // grey.300
     primary: "#3182f6", // blue.500 — focused input, selected state
     danger: "#f04452", // red.500 — error state input
+    inverse: "#4e5968", // grey.700 — border on an inverse (dark) surface
   },
   /** Text-only semantic colors. Prefer these over `colors.grey.*` in component code. */
   text: {
@@ -175,6 +178,8 @@ export const colors = {
     disabled: "#b0b8c1", // grey.400
     placeholder: "#b0b8c1", // grey.400
     inverse: "#ffffff",
+    /** De-emphasized text on an inverse (dark) surface. */
+    inverseSecondary: "#b0b8c1", // grey.400
   },
 } as const;
 

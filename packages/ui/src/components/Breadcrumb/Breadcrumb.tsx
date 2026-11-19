@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { LinkComponent } from "../../utils/link";
 
 export interface BreadcrumbItem {
   label: ReactNode;
@@ -7,6 +8,8 @@ export interface BreadcrumbItem {
 
 export interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  /** `href`가 있는 항목을 그릴 링크 컴포넌트 (예: Next.js `Link`). 지정하지 않으면 `<a>`로 이동해 페이지 전체를 새로 불러옵니다. @default "a" */
+  linkComponent?: LinkComponent;
   className?: string;
 }
 
@@ -18,7 +21,7 @@ function ChevronRightIcon() {
   );
 }
 
-export function Breadcrumb({ items, className }: BreadcrumbProps) {
+export function Breadcrumb({ items, linkComponent: Link = "a", className }: BreadcrumbProps) {
   return (
     <nav aria-label="현재 위치" className={["ds-breadcrumb", className].filter(Boolean).join(" ")}>
       <ol className="flex items-center gap-[var(--ds-space-1)]">
@@ -42,12 +45,12 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
                   {item.label}
                 </span>
               ) : (
-                <a
+                <Link
                   href={item.href}
                   className="text-[length:var(--ds-font-size-body3)] leading-[var(--ds-line-height-body3)] text-[var(--ds-color-text-tertiary)] hover:text-[var(--ds-color-text-primary)] hover:underline"
                 >
                   {item.label}
-                </a>
+                </Link>
               )}
             </li>
           );

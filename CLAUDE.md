@@ -67,9 +67,9 @@ Token categories and where they live:
 |-------------|--------------------------|-------------------------------------------|
 | Color (primitive palette) | `--ds-color-{grey,blue,red,orange,yellow,green,teal,purple}-*`, `--ds-color-grey-opacity-*` | `src/styles/tokens.css`, `src/tokens/colors.ts` — **reference only, don't use directly in components** |
 | Color (semantic action) | `--ds-color-primary` / `-secondary` / `-success` / `-danger` / `-warning` / `-info` (each with `-hover`, `-active`, `-light`) | same files, `colors.action` — **use this in components**, not the primitive scale |
-| Color (semantic text) | `--ds-color-text-primary` / `-secondary` / `-tertiary` / `-disabled` / `-placeholder` / `-inverse` | same files, `colors.text` |
-| Color (semantic border) | `--ds-color-border` / `-strong` / `-primary` / `-danger` | same files, `colors.border` |
-| Color (semantic background) | `--ds-color-background` / `-grey-background` / `-layered-background` / `-floated-background` / `-inverse-background` | same files, `colors.semantic` |
+| Color (semantic text) | `--ds-color-text-primary` / `-secondary` / `-tertiary` / `-disabled` / `-placeholder` / `-inverse` / `-inverse-secondary` | same files, `colors.text` |
+| Color (semantic border) | `--ds-color-border` / `-strong` / `-primary` / `-danger` / `-inverse` | same files, `colors.border` |
+| Color (semantic background) | `--ds-color-background` / `-grey-background` / `-layered-background` / `-floated-background` / `-inverse-background` / `-inverse-background-hover` | same files, `colors.semantic` |
 | Typography  | `--ds-font-size-*` / `--ds-line-height-*` | `src/tokens/typography.ts` |
 | Font family | `--ds-font-family-sans` | `src/tokens/fontFamily.ts` |
 | Spacing     | `--ds-space-*`           | `src/tokens/spacing.ts` |
@@ -82,11 +82,19 @@ Token categories and where they live:
 | Transition  | `--ds-transition-{fast,normal,slow}` / `-timing` | `src/tokens/transition.ts` |
 | Focus ring  | `--ds-ring-color` / `-width` / `-offset-width` | `src/tokens/focusRing.ts` |
 | Avatar size | `--ds-avatar-*`          | `src/tokens/avatarSize.ts` |
+| Control height | `--ds-control-height-{sm,md,lg}` | `src/tokens/controlHeight.ts` — Button/IconButton/Input/Select/DatePicker 높이. `h-8/10/12` 같은 Tailwind 고정 높이 대신 이걸 쓴다 |
 
 Where a category has both a **primitive** and a **semantic** layer (only Color does, today),
 components must reference the semantic layer (`colors.action`, `colors.text`, `colors.border`,
 `colors.semantic`) — never the raw primitive scale (`colors.grey`, `colors.blue`, ...). The
 primitive scale exists purely so semantic tokens have somewhere to derive their value from.
+
+**Density.** `[data-density="compact"]` (in `tokens.css`, mirrored by `src/tokens/density.ts`) re-declares
+the size tokens (font size, spacing, icon, avatar, control height, `radius-lg`) for dense
+business screens; consumers opt in with `<html data-density="compact">`. This only works because
+components read sizes exclusively from tokens — a hardcoded `h-10` or `text-[16px]` silently ignores
+density. When adding a new size token, decide whether it needs a compact value too and add it to both
+places.
 
 If a new value is genuinely needed (a new color, a one-off spacing step), add it as a new
 `--ds-*` variable in `tokens.css` (and the matching entry in `src/tokens/*.ts`) first — don't

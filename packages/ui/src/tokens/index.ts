@@ -11,3 +11,5 @@ export { borderWidth, type BorderWidthToken } from "./borderWidth";
 export { transition, type TransitionDurationToken } from "./transition";
 export { focusRing } from "./focusRing";
 export { avatarSize, type AvatarSizeToken } from "./avatarSize";
+export { controlHeight, type ControlHeightToken } from "./controlHeight";
+export { density, type Density } from "./density";

@@ -53,5 +53,25 @@ body {
   --rdp-accent-background-color: var(--ds-color-primary-light);
   --rdp-today-color: var(--ds-color-primary);
   --rdp-day_button-border-radius: var(--ds-radius-full);
+  /* Sizes follow tokens so the calendar shrinks with data-density="compact".
+     Comfortable values equal react-day-picker's own defaults (44 / 40 / 36px). */
+  --rdp-day-width: calc(var(--ds-control-height-md) + var(--ds-space-1));
+  --rdp-day-height: calc(var(--ds-control-height-md) + var(--ds-space-1));
+  --rdp-day_button-width: var(--ds-control-height-md);
+  --rdp-day_button-height: var(--ds-control-height-md);
+  --rdp-nav-height: calc(var(--ds-control-height-md) + var(--ds-space-1));
+  --rdp-nav_button-width: calc(var(--ds-control-height-sm) + var(--ds-space-1));
+  --rdp-nav_button-height: calc(var(--ds-control-height-sm) + var(--ds-space-1));
+  --rdp-weekday-padding: var(--ds-space-2) 0;
   font-family: var(--ds-font-family-sans);
+  font-size: var(--ds-font-size-body2);
+}
+
+/* react-day-picker uses keyword font sizes (large / smaller) — pin them to tokens. */
+.rdp-root .rdp-month_caption,
+.rdp-root .rdp-selected {
+  font-size: var(--ds-font-size-subtitle2);
+}
+.rdp-root .rdp-weekday {
+  font-size: var(--ds-font-size-caption2);
 }

@@ -1,0 +1,52 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { density, controlHeight, typography, spacing, iconSize, avatarSize } from "@kccinc/kcclab-design-system/tokens";
+
+<Meta title="Foundation/Density" />
+
+# Density
+
+`packages/ui/src/styles/tokens.css` · `src/tokens/density.ts`
+
+기본값(`comfortable`)은 일반 서비스 화면 기준입니다 — 본문 15~16px, 컨트롤 40px.
+대시보드·관리 화면처럼 한 화면에 많은 정보를 보여야 하는 **업무 화면**은 `compact`를 켜세요 —
+본문 12px, 컨트롤 28/33/40px로 촘촘해집니다. 바뀌는 건 크기뿐이고, 색은 그대로입니다.
+
+```html
+<html data-density="compact">
+```
+
+- **`<html>`에 붙이세요.** 감싸는 `<div>`에 붙이면 그 안에서는 동작하지만, Dialog·Tooltip·DropdownMenu처럼
+  `<body>` 아래로 포털되는 요소에는 적용되지 않습니다.
+- 컴포넌트 코드는 바꿀 필요가 없습니다 — 모든 컴포넌트가 `--ds-*` 토큰만 쓰기 때문에, 토큰 값만 바뀌면 함께 작아집니다.
+- 앱 화면도 px 대신 토큰(`text-[length:var(--ds-font-size-body2)]`, `h-[var(--ds-control-height-md)]` 등)을 쓰면 같이 따라옵니다.
+- Storybook 상단 툴바의 **Density** 버튼으로 모든 스토리를 `compact`로 바꿔 볼 수 있습니다.
+
+## 바뀌는 값
+
+export const comfortable = {
+  ...Object.fromEntries(Object.entries(typography).flatMap(([k, v]) => [[`--ds-font-size-${k}`, v.fontSize], [`--ds-line-height-${k}`, v.lineHeight]])),
+  ...Object.fromEntries(Object.entries(spacing).map(([k, v]) => [`--ds-space-${k}`, v])),
+  ...Object.fromEntries(Object.entries(iconSize).map(([k, v]) => [`--ds-icon-${k}`, v])),
+  ...Object.fromEntries(Object.entries(avatarSize).map(([k, v]) => [`--ds-avatar-${k}`, v])),
+  ...Object.fromEntries(Object.entries(controlHeight).map(([k, v]) => [`--ds-control-height-${k}`, v])),
+  "--ds-radius-lg": "16px",
+};
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ textAlign: "left" }}>변수</th>
+      <th style={{ textAlign: "right" }}>comfortable (기본)</th>
+      <th style={{ textAlign: "right" }}>compact</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.entries(density.compact).map(([name, value]) => (
+      <tr key={name}>
+        <td style={{ fontFamily: "monospace", fontSize: 13 }}>{name}</td>
+        <td style={{ fontFamily: "monospace", fontSize: 13, textAlign: "right", color: "#6b7684" }}>{comfortable[name] ?? "—"}</td>
+        <td style={{ fontFamily: "monospace", fontSize: 13, textAlign: "right" }}>{value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
